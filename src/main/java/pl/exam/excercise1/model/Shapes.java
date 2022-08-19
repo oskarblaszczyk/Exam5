@@ -5,7 +5,6 @@ import pl.exam.excercise1.controller.Shape;
 
 import java.util.List;
 
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

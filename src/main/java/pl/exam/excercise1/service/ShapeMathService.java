@@ -1,12 +1,14 @@
 package pl.exam.excercise1.service;
 
+import lombok.NoArgsConstructor;
 import pl.exam.excercise1.controller.Shape;
 
 import java.util.*;
 
+@NoArgsConstructor
 public class ShapeMathService {
 
-    public static Shape biggestArea(List<Shape> shapes) {
+    public  Shape biggestArea(List<Shape> shapes) {
         return Optional.ofNullable(shapes)
                 .orElse(Collections.emptyList())
                 .stream()
@@ -15,7 +17,7 @@ public class ShapeMathService {
                 .orElseThrow();
     }
 
-    public static <T> Shape biggestPerimeter(List<Shape> shapes, Class<T> type) {
+    public  <T> Shape biggestPerimeter(List<Shape> shapes, Class<T> type) {
         return Optional.ofNullable(shapes)
                 .orElse(Collections.emptyList())
                 .stream()

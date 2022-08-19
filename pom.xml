@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.test</groupId>
-    <artifactId>Test5</artifactId>
+    <groupId>pl.exam</groupId>
+    <artifactId>Exam5</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -48,7 +48,12 @@
             <version>4.10.0</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>3.4.2</version>
+        </dependency>
 
     </dependencies>
 
@@ -57,14 +62,11 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.8</version>
 
                 <configuration>
                     <excludes>
-                        <!-- <exclude>pl/kurs/abc/Abc.class</exclude>-->
-                        <!-- <exclude>**/paczka/*</exclude>-->
-
-                        <!-- <exclude>pl/kurs/**/*bc*.*</exclude> -->
+                         <exclude>pl/exam/Main.class</exclude>
                     </excludes>
 
                 </configuration>
@@ -125,6 +127,32 @@
 
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>pl.exam.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
 
         </plugins>
     </build>

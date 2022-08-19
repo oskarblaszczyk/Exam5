@@ -16,8 +16,11 @@ public class ShapeMathServiceTest {
     private Square s1;
     private Rectangle r1;
 
+    private ShapeMathService shapeMathService;
+
     @Before
     public void init() {
+        shapeMathService = new ShapeMathService();
         c1 = new Circle(2.0);
         s1 = new Square(4.0);
         r1 = new Rectangle(4.0, 2.0);
@@ -25,12 +28,24 @@ public class ShapeMathServiceTest {
 
     @Test
     public void shouldReturnS1WithBiggestArea(){
-        assertEquals(s1, ShapeMathService.biggestArea(Arrays.asList(c1,s1,r1)));
+        assertEquals(s1, shapeMathService.biggestArea(Arrays.asList(c1,s1,r1)));
     }
 
     @Test
-    public void shouldReturnC1WithBiggestPerimeterForType(){
-        assertEquals(c1, ShapeMathService.biggestPerimeter(Arrays.asList(c1,s1,r1), Circle.class));
+    public void shouldReturnTrueWhenC1HaveBiggestPerimeterForType(){
+        assertEquals(c1, shapeMathService.biggestPerimeter(Arrays.asList(c1,s1,r1), Circle.class));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenC1HaveWithBiggestPerimeterForType(){
+        assertNotEquals(s1, shapeMathService.biggestPerimeter(Arrays.asList(c1,s1,r1), Circle.class));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenShapesHaveCorrectPerimeter(){
+        assertEquals(16.0, s1.perimeter(), 0.001);
+        assertEquals(12.0, r1.perimeter(), 0.001);
+        assertEquals(12.56, c1.perimeter(), 0.01);
     }
 
 }

@@ -4,13 +4,12 @@ import lombok.*;
 import pl.exam.excercise1.controller.Shape;
 
 @EqualsAndHashCode
-@ToString
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Square implements Shape {
-    @NonNull
+
     private double a;
 
     @Override
@@ -20,6 +19,6 @@ public class Square implements Shape {
 
     @Override
     public double perimeter() {
-        return 0;
+        return 4*a;
     }
 }

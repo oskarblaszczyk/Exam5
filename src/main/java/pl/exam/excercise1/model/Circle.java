@@ -4,13 +4,11 @@ import lombok.*;
 import pl.exam.excercise1.controller.Shape;
 
 @EqualsAndHashCode
-@ToString
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Circle implements Shape {
-    @NonNull
     private double radius;
 
 
@@ -21,6 +19,6 @@ public class Circle implements Shape {
 
     @Override
     public double perimeter() {
-        return 0;
+        return 2 * Math.PI * radius;
     }
 }
