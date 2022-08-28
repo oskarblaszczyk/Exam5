@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>3.4.4</version>
+            <version>4.7.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -67,6 +67,7 @@
                 <configuration>
                     <excludes>
                          <exclude>pl/exam/Main.class</exclude>
+                         <exclude>pl/exam/exercise2/configuration/*</exclude>
                     </excludes>
 
                 </configuration>
@@ -102,12 +103,12 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.70</minimum>
+                                            <minimum>0.80</minimum>
                                         </limit>
                                         <limit>
                                             <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.70</minimum>
+                                            <minimum>0.80</minimum>
                                         </limit>
                                         <limit>
                                             <counter>METHOD</counter>
@@ -152,7 +153,6 @@
                     </execution>
                 </executions>
             </plugin>
-
 
         </plugins>
     </build>

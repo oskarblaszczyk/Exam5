@@ -1,0 +1,12 @@
+pl\exam\exercise1\model\Square.class
+pl\exam\exercise1\service\ShapeJsonService$1.class
+pl\exam\exercise2\service\CurrencyExchangeService.class
+pl\exam\exercise1\service\ShapeMathService.class
+pl\exam\exercise1\model\Rectangle.class
+pl\exam\exercise2\controller\CurrencyExchangeController.class
+pl\exam\exercise2\configuration\Configuration.class
+pl\exam\exercise1\model\Shape.class
+pl\exam\exercise1\service\ShapeJsonService.class
+pl\exam\Main.class
+pl\exam\exercise2\exception\ExchangeRatesApiError.class
+pl\exam\exercise1\model\Circle.class

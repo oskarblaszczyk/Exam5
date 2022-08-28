@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CurrencyExchangeService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Exam5</a> &gt; <a href="index.source.html" class="el_package">pl.exam.exercise2.service</a> &gt; <span class="el_source">CurrencyExchangeService.java</span></div><h1>CurrencyExchangeService.java</h1><pre class="source lang-java linenums">package pl.exam.exercise2.service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import pl.exam.exercise2.controller.CurrencyExchangeController;
+import pl.exam.exercise2.exception.ExchangeRatesApiError;
+
+import java.io.IOException;
+
+public class CurrencyExchangeService {
+    private final CurrencyExchangeController currencyExchangeController;
+    private final ObjectMapper objectMapper;
+
+<span class="fc" id="L15">    public CurrencyExchangeService(CurrencyExchangeController currencyExchangeController, ObjectMapper objectMapper) {</span>
+<span class="fc" id="L16">        this.currencyExchangeController = currencyExchangeController;</span>
+<span class="fc" id="L17">        this.objectMapper = objectMapper;</span>
+<span class="fc" id="L18">    }</span>
+
+    public double exchange(String currencyFrom, String currencyTo, double amount) throws IOException {
+<span class="fc" id="L21">        String response = currencyExchangeController.getConvertRequest(currencyTo, currencyFrom, amount);</span>
+<span class="fc" id="L22">        JsonNode read = objectMapper.readTree(response);</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (read.get(&quot;error&quot;) != null) {</span>
+<span class="fc" id="L24">            throw new ExchangeRatesApiError(read.get(&quot;error&quot;).get(&quot;message&quot;).asText());</span>
+        }
+<span class="fc" id="L26">        return read.get(&quot;result&quot;).asDouble();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
